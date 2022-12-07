@@ -10,17 +10,13 @@ function Login() {
   const checkFormData = (email, password) => {
     const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-    if (!regexEmail.test(email)) {
-      sweetAlert(
-        <h2>"Invalid mail"</h2>
-      );
+    if (!regexEmail.test(email) || email !== "challenge@alkemy.org") {
+      sweetAlert("error", "Invalid email", "error");
       return;
     }
 
-    if (email !== "challenge@alkemy.org" || password !== "react") {
-      sweetAlert(
-        <h2>"Invalid user"</h2>
-      );
+    if (password !== "react") {
+      sweetAlert("error", "Invalid password", "error");
       return;
     }
   }
@@ -36,9 +32,7 @@ function Login() {
     axios
       .post('http://challenge-react.alkemy.org', { email, password })
       .then(res => {
-        sweetAlert(
-          <h2>"READY"</h2>
-        );
+        sweetAlert("Sucess", "Valid data", "success");
         const tokenReceived = res.data.token;
         localStorage.setItem('token', tokenReceived);
         navigate('/list');
