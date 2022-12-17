@@ -1,10 +1,11 @@
 /* eslint-disable no-useless-escape */
 import axios from 'axios';
 import sweetAlert from '@sweetalert/with-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 
 function Login() {
 
+  const token = localStorage.getItem('token');
   const navigate = useNavigate();
 
   const checkFormData = (email, password) => {
@@ -40,24 +41,23 @@ function Login() {
   }
 
   return (
-    <>
-      <h2>Login form</h2>
-      <form onSubmit={submitHandler}>
+    <div className='container bg-light mt-3 rounded'>
+      {token && <Navigate to="/list" />}
+      <h2 className='text-center pt-3'>Login form</h2>
+      <form onSubmit={submitHandler} className="container-sm mx-auto d-flex flex-column py-4">
         <label>
-          <span>Email:</span>
-          <br />
-          <input type="text" name="email" />
+          <span className='d-block text-center'>Email:</span>
+          <input type="text" name="email" className='d-block w-50 mx-auto'/>
         </label>
         <br/>
         <label>
-          <span>Password:</span>
-          <br />
-          <input type="password" name="password" />
+          <span className='d-block text-center'>Password:</span>
+          <input type="password" name="password" className='d-block w-50 mx-auto'/>
         </label>
         <br/>
-        <button type="submit">Enter</button>
+        <button type="submit" className='w-25 mx-auto'>Enter</button>
       </form>
-    </>
+    </div>
   );
 }
 

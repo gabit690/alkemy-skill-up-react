@@ -1,7 +1,7 @@
 function Header() {
     return (
-        <header>
-            Movies app
+        <header className="bg-info py-2">
+            <h1 className="fs-1 text-center text-light">Movies app</h1>
         </header>
     );
 }
