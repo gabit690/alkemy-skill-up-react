@@ -27,7 +27,7 @@ function List() {
                 <div class="card-body">
                   <h5 class="card-title">{ movie.title }</h5>
                   <p class="card-text">{ movie.overview }</p>
-                  <Link to="#" class="btn btn-primary">Go somewhere</Link>
+                  <Link to={`/detail/${movie.id}`} class="btn btn-primary">Go somewhere</Link>
                 </div>
               </div>
             </div>

@@ -36,13 +36,13 @@ function Login() {
         sweetAlert("Sucess", "Valid data", "success");
         const tokenReceived = res.data.token;
         localStorage.setItem('token', tokenReceived);
-        navigate('/list');
+        navigate('/discover');
       });
   }
 
   return (
     <div className='container bg-light mt-3 rounded'>
-      {token && <Navigate to="/list" />}
+      {token && <Navigate to="/discover" />}
       <h2 className='text-center pt-3'>Login form</h2>
       <form onSubmit={submitHandler} className="container-sm mx-auto d-flex flex-column py-4">
         <label>

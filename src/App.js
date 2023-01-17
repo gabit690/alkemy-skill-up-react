@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
-import List from "./pages/List";
+import Discover from "./pages/Discover";
 import NotFound from "./pages/NotFound";
-import UserRoutes from "./routes/UserRoutes";
 import Header from "./components/Header";
 import Footer from './components/Footer';
+import Detail from "./pages/Detail";
 
 function App() {
 
@@ -12,12 +12,8 @@ function App() {
     <Header />
     <Routes>
       <Route path="/" element={<Login />} />
-
-      <Route path="users/*" element={<UserRoutes />} />
-      
-      <Route path="list" element={<List />} />
-
-      
+      <Route path="discover" element={<Discover />} />
+      <Route path="detail/:id" element={<Detail />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
     <Footer />
