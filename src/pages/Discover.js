@@ -17,7 +17,7 @@ function List() {
   return (
     <>
       {!token && <Navigate to="/" />}
-      <div className="row">
+      <div className="row m-3">
       {
         movies.map((movie, index) => {
           return (
@@ -25,9 +25,9 @@ function List() {
               <div class="card">
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} class="card-img-top" alt="..." />
                 <div class="card-body">
-                  <h5 class="card-title">{ movie.title }</h5>
-                  <p class="card-text">{ movie.overview }</p>
-                  <Link to={`/detail/${movie.id}`} class="btn btn-primary">Go somewhere</Link>
+                  <h5 class="card-title">{ `${(movie.title).substring(0, 32)}...` }</h5>
+                  <p class="card-text">{ `${(movie.overview).substring(0, 140)}...` }</p>
+                  <Link to={`/detail/${movie.id}`} class="btn btn-primary d-block">More info</Link>
                 </div>
               </div>
             </div>
