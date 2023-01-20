@@ -3,9 +3,15 @@ import axios from 'axios';
 import sweetAlert from '@sweetalert/with-react';
 import { useNavigate, Navigate } from 'react-router-dom';
 
+import { useContext } from 'react';
+
+import { TokenContext } from '../App';
+
 function Login() {
 
-  const token = localStorage.getItem('token');
+  const setToken = useContext(TokenContext);
+
+  const token = sessionStorage.getItem('token');
   const navigate = useNavigate();
 
   const checkFormData = (email, password) => {
@@ -35,7 +41,8 @@ function Login() {
       .then(res => {
         sweetAlert("Sucess", "Valid data", "success");
         const tokenReceived = res.data.token;
-        localStorage.setItem('token', tokenReceived);
+        sessionStorage.setItem('token', tokenReceived);
+        setToken(tokenReceived);
         navigate('/discover');
       });
   }
