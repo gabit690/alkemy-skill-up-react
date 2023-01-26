@@ -17,7 +17,7 @@ function App() {
 
   return <TokenContext.Provider value={setToken}>
     <Header />
-    {localStorage.getItem('token') && <Menu />}
+    {sessionStorage.getItem('token') && <Menu />}
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="discover" element={<Discover />} />
