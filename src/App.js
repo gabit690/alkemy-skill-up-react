@@ -7,8 +7,9 @@ import Footer from './components/Footer';
 import Detail from "./pages/Detail";
 import Menu from "./components/Menu";
 import Results from "./pages/Results";
-
 import { createContext, useState } from "react";
+
+import "./App.css";
 
 export const TokenContext = createContext();
 
@@ -16,12 +17,16 @@ function App() {
 
   const [token, setToken] = useState(sessionStorage.getItem('token'));
 
+  const toggleFavState = () => {
+    console.log("FAVOURITE");
+  }
+
   return <TokenContext.Provider value={setToken}>
     <Header />
     {sessionStorage.getItem('token') && <Menu />}
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route path="discover" element={<Discover />} />
+      <Route path="discover" element={<Discover toggleFavState={toggleFavState} />} />
       <Route path="detail" element={<Detail />} />
       <Route path="results" element={<Results />} />
       <Route path="*" element={<NotFound />} />

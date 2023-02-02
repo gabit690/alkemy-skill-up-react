@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, Navigate } from 'react-router-dom';
 import axios from "axios";
 
-function List() {
+function Discover(props) {
 
   const [movies, setMovies] = useState([]);
   const token = sessionStorage.getItem('token');
@@ -24,6 +24,7 @@ function List() {
             <div className="col-3 mt-3" key={index}>
               <div class="card">
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} class="card-img-top" alt="..." />
+                <button className="btn-fav" onClick={props.toggleFavState}>🤍</button>
                 <div class="card-body">
                   <h5 class="card-title">{ `${(movie.title).substring(0, 32)}...` }</h5>
                   <p class="card-text">{ `${(movie.overview).substring(0, 140)}...` }</p>
@@ -40,4 +41,4 @@ function List() {
   );
 }
 
-export default List;
+export default Discover;
