@@ -24,7 +24,7 @@ function Discover(props) {
             <div className="col-3 mt-3" key={index}>
               <div class="card">
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} class="card-img-top" alt="..." />
-                <button className="btn-fav" onClick={props.toggleFavState}>🤍</button>
+                <button className="btn-fav" onClick={props.toggleFavState} data-movie-id={movie.id}>🤍</button>
                 <div class="card-body">
                   <h5 class="card-title">{ `${(movie.title).substring(0, 32)}...` }</h5>
                   <p class="card-text">{ `${(movie.overview).substring(0, 140)}...` }</p>
